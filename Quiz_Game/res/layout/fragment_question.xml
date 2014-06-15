@@ -17,18 +17,18 @@
 
     <Button
         android:id="@+id/button2"
-        android:onClick="checkAnswer2"
+        android:onClick="checkAnswer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/button1"
         android:layout_centerHorizontal="true"
         android:layout_gravity="center"
         android:layout_marginTop="20dp"
-        android:text="Button" />
+        android:text="testing" />
 
     <Button
         android:id="@+id/button3"
-        android:onClick="checkAnswer3"
+        android:onClick="checkAnswer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/button2"
@@ -39,7 +39,7 @@
 
     <Button
         android:id="@+id/button4"
-        android:onClick="checkAnswer4"
+        android:onClick="checkAnswer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
@@ -49,7 +49,7 @@
 
     <Button
         android:id="@+id/button1"
-        android:onClick="checkAnswer1"
+        android:onClick="checkAnswer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"

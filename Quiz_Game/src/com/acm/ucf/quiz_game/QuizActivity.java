@@ -1,17 +1,34 @@
 package com.acm.ucf.quiz_game;
 
+import java.util.ArrayList;
+import java.util.Random;
+
 import android.app.Activity;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.content.res.Resources;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 public class QuizActivity extends Activity {
-
+	
+	
+	//counts the question number currently answering
+	private int questionNum = 0;
+	//holds the questions
+	private ArrayList<Question> questions;
+	private Button[] buttons = new Button[4];
+	private Question currentQuestion;
+	FragmentManager fragmentManager;
+	FragmentTransaction fragmentTransaction;
+	int score = 0;
+	
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -19,20 +36,58 @@ public class QuizActivity extends Activity {
 
 		if (savedInstanceState == null) {
 			
-			FragmentManager fragmentManager = getFragmentManager();
-			FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+			 fragmentManager = getFragmentManager();
+			 fragmentTransaction = fragmentManager.beginTransaction();
 			
 			fragmentTransaction.add(R.id.scoreFragment, new ScoreFragment());
 			fragmentTransaction.add(R.id.questionFragment, new QuestionFragment());
 			fragmentTransaction.add(R.id.navigationFragment, new NavigationFragment());
 			
+			//creates the questions
+			questions = new ArrayList<Question>();
+			currentQuestion = new Question("correct");
+			questions.add(currentQuestion);
 			fragmentTransaction.commit();
+			
+	
 		}
 		
 		//Button nextQuestionButton = (Button) findViewById(R.id.next);
 		//nextQuestionButton.setEnabled(false);
-		
+		//	initialize();
 	}
+	
+	
+	/* TALK ABOUT THIS, WHY DOESNT IT WORK?
+	private void initialize(){
+		
+	
+		
+		buttons[0] = (Button) findViewById(R.id.button1);
+		buttons[1] = (Button) findViewById(R.id.button2);
+		buttons[2] = (Button) findViewById(R.id.button3);
+		buttons[3] = (Button) findViewById(R.id.button4);
+		
+		
+		
+			
+		
+		
+		//loads possible answers from array
+		Resources res = getResources();
+		String[] answers = res.getStringArray(R.array.questionBank);
+		
+		
+		//creates a random number between 0 and 3 that button is correct and the others are incorrect
+		Random rand = new Random();
+		int correct = rand.nextInt(4); 
+		
+		
+		buttons[correct].setText(answers[0]);
+		buttons[(correct + 1) % 4].setText(answers[1]);
+		buttons[(correct + 2) % 4].setText(answers[2]);
+		buttons[(correct + 3) % 4].setText(answers[3]); 
+		} */
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
@@ -54,92 +109,72 @@ public class QuizActivity extends Activity {
 		return super.onOptionsItemSelected(item);
 	}
 	
+	
 	// Method will be called when a button is clicked to answer a question.
 	// It will grey out all the answers except the correct one, which will be in green
 	// if the user selected the wrong answer, it will be shown in red.
-	public void checkAnswer1(View v){
+	public void checkAnswer(View v){
 		
-		Button btn1 = (Button) findViewById(R.id.button1);
-		Button btn2 = (Button) findViewById(R.id.button2);
-		Button btn3 = (Button) findViewById(R.id.button3);
-		Button btn4 = (Button) findViewById(R.id.button4);
+		buttons[0] = (Button) findViewById(R.id.button1);
+		buttons[1] = (Button) findViewById(R.id.button2);
+		buttons[2] = (Button) findViewById(R.id.button3);
+		buttons[3] = (Button) findViewById(R.id.button4);
 		
-		btn1.setBackgroundColor(Color.GREEN);
-		btn2.setBackgroundColor(Color.DKGRAY);
-		btn3.setBackgroundColor(Color.DKGRAY);
-		btn4.setBackgroundColor(Color.DKGRAY);
+		Button btnChosen = (Button) findViewById(v.getId());
+		TextView scoreView = (TextView) findViewById(R.id.tvScore);
 		
-		btn1.setEnabled(false);
-		btn2.setEnabled(false);
-		btn3.setEnabled(false);
-		btn4.setEnabled(false);
+		/* can change getText to getKey and set a key in the xml*/
 		
-		//enableNext();
+		//checks the buttons text against the Question 
+		boolean correct = currentQuestion.checkAnswer(btnChosen);
 		
-	}
-	public void checkAnswer2(View v){
+		if(correct){
+			btnChosen.setBackgroundColor(Color.GREEN);
+			scoreView.setText("Score " + score);
+			score++;
+		}
 		
-		Button btn1 = (Button) findViewById(R.id.button1);
-		Button btn2 = (Button) findViewById(R.id.button2);
-		Button btn3 = (Button) findViewById(R.id.button3);
-		Button btn4 = (Button) findViewById(R.id.button4);
+		else btnChosen.setBackgroundColor(Color.RED);
+			
 		
-		btn1.setBackgroundColor(Color.GREEN);
-		btn2.setBackgroundColor(Color.RED);
-		btn3.setBackgroundColor(Color.DKGRAY);
-		btn4.setBackgroundColor(Color.DKGRAY);
+		for(int i = 0; i < 4; i++){
+			if(btnChosen.equals(buttons[i])) continue;
+			
+			if(currentQuestion.checkAnswer(buttons[i])) buttons[i].setBackgroundColor(Color.GREEN);
+			else buttons[i].setBackgroundColor(Color.GRAY);
+			buttons[i].setEnabled(false);
+		}
 		
-		btn1.setEnabled(false);
-		btn2.setEnabled(false);
-		btn3.setEnabled(false);
-		btn4.setEnabled(false);
-		
-		//enableNext();
-
-	}
-	public void checkAnswer3(View v){
-		
-		Button btn1 = (Button) findViewById(R.id.button1);
-		Button btn2 = (Button) findViewById(R.id.button2);
-		Button btn3 = (Button) findViewById(R.id.button3);
-		Button btn4 = (Button) findViewById(R.id.button4);
-		
-		btn1.setBackgroundColor(Color.GREEN);
-		btn2.setBackgroundColor(Color.DKGRAY);
-		btn3.setBackgroundColor(Color.RED);
-		btn4.setBackgroundColor(Color.DKGRAY);
-		
-		btn1.setEnabled(false);
-		btn2.setEnabled(false);
-		btn3.setEnabled(false);
-		btn4.setEnabled(false);
-		
-		//enableNext();
-
-	}
-	public void checkAnswer4(View v){
-		
-		Button btn1 = (Button) findViewById(R.id.button1);
-		Button btn2 = (Button) findViewById(R.id.button2);
-		Button btn3 = (Button) findViewById(R.id.button3);
-		Button btn4 = (Button) findViewById(R.id.button4);
-		
-		btn1.setBackgroundColor(Color.GREEN);
-		btn2.setBackgroundColor(Color.DKGRAY);
-		btn3.setBackgroundColor(Color.DKGRAY);
-		btn4.setBackgroundColor(Color.RED);
-		
-		btn1.setEnabled(false);
-		btn2.setEnabled(false);
-		btn3.setEnabled(false);
-		btn4.setEnabled(false);
-		
-		//enableNext();
-
+	
 	}
 	
-	public void enableNext(){
+	public void findCorrect(Button btnSkip){
+		
+		
+		//finds the correct ansewr and makes it green all others are gray
+		for(int i = 0; i < 4; i++){
+			if(btnSkip.equals(buttons[i])) continue;
+			
+		if(currentQuestion.checkAnswer(buttons[i])) buttons[i].setBackgroundColor(Color.GREEN);
+			else buttons[i].setBackgroundColor(Color.GRAY);
+		}
+	}
+	
+	
+	public void next(View V){
+		
+		
+		FragmentTransaction transaction = getFragmentManager().beginTransaction();
+		transaction.replace(R.id.questionFragment, new QuestionFragment());
+		transaction.commit(); 
+	
+		
+		currentQuestion = new Question("correct");
+		questions.add(currentQuestion);
+		
+		
 		
 	}
+	
 	
 }

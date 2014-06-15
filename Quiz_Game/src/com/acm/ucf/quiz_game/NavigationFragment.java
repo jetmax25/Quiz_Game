@@ -9,7 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
-public class NavigationFragment extends Fragment implements View.OnClickListener{
+public class NavigationFragment extends Fragment {
 	AlertDialog.Builder builder1;
 	Button b;
 	@Override
@@ -18,12 +18,13 @@ public class NavigationFragment extends Fragment implements View.OnClickListener
 		View rootView = inflater.inflate(R.layout.fragment_navigation, container, false);
 		 builder1 = new AlertDialog.Builder(getActivity());
 		 b =(Button) rootView.findViewById(R.id.quit);
-		 b.setOnClickListener(this);
+		
 		return rootView;
 	}
 
-	@Override
 	public void onClick(View v) {
+		
+		
 		// TODO Auto-generated method stub
 		//AlertDialog.Builder builder1 = new AlertDialog.Builder(this);
         builder1.setMessage("Are you sure you want to exit ?");
@@ -45,6 +46,10 @@ public class NavigationFragment extends Fragment implements View.OnClickListener
         AlertDialog alert11 = builder1.create();
         alert11.show();
 	}
+	
+
+
+	
 
 	
 	
