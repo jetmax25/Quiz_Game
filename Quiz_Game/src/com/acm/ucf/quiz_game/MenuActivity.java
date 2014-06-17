@@ -1,13 +1,8 @@
 package com.acm.ucf.quiz_game;
 
 import com.acm.ucf.quiz_game.MainActivity.PlaceholderFragment;
-<<<<<<< HEAD
 import android.app.Activity;
 import android.content.Intent;
-=======
-import android.content.Intent;
-import android.app.Activity;
->>>>>>> c851342babbf15569369cdfd4b1340f6ca7f13bc
 import android.net.Uri;
 import android.os.Bundle;
 import android.widget.Button;
@@ -20,7 +15,6 @@ public class MenuActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-<<<<<<< HEAD
         setContentView(R.layout.activity_main);
     	
         Button btnquiz = (Button) findViewById(R.id.btnQuiz);
@@ -37,15 +31,4 @@ public class MenuActivity extends Activity {
     	});
     	
     }
-=======
-        setContentView(R.layout.activity_menu);
-    	
-    }
-    
-    public void startQuiz(View view)
-    {
-    	Intent intent = new Intent(this, QuizActivity.class);
-    	startActivity(intent);
-    }
->>>>>>> c851342babbf15569369cdfd4b1340f6ca7f13bc
 }
