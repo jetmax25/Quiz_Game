@@ -1,0 +1,82 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/RelativeLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.acm.ucf.quiz_game.QuizActivity$PlaceholderFragment" >
+
+    <EditText
+        android:id="@+id/editText1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:ems="10"
+        android:gravity="center_horizontal"
+        android:hint="Enter Name Here!!"
+        android:inputType="textPersonName" >
+
+    </EditText>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:id="@+id/linearLayout1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/editText1"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="109dp" >
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignRight="@+id/linearLayout1"
+        android:layout_below="@+id/editText1"
+        android:gravity="center_horizontal"
+        android:text="Score"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/linearLayout1"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/editText1"
+        android:gravity="center_horizontal"
+        android:text="Time"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <EditText
+        android:id="@+id/editText2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignRight="@+id/textView1"
+        android:layout_below="@+id/textView1"
+        android:ems="10"
+        android:gravity="center_horizontal"
+        android:inputType="number"
+        android:text="0" >
+
+        <requestFocus />
+
+    </EditText>
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/editText2"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/editText2"
+        android:layout_toRightOf="@+id/editText2"
+        android:gravity="center"
+        android:text="TextView" />
+
+</RelativeLayout>
