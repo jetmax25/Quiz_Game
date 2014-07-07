@@ -41,13 +41,6 @@ public class MainActivity extends Activity {
         }
         return super.onOptionsItemSelected(item);
     }
-    
-    public void startQuiz(View view){
-    	
-    	Intent intent = new Intent(this, QuizActivity.class);
-    	startActivity(intent);
-    	
-    }
 
     /**
      * A placeholder fragment containing a simple view.

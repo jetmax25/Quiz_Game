@@ -6,7 +6,7 @@
 
     <uses-sdk
         android:minSdkVersion="16"
-        android:targetSdkVersion="19" />
+        android:targetSdkVersion="21" />
 
     <application
         android:allowBackup="true"
@@ -19,7 +19,7 @@
 
         </activity>
         <activity
-            android:name="com.acm.ucf.quiz_game.MenuActivity"
+            android:name="com.acm.ucf.quiz_game.SplashScreen"
         	android:label="@string/title_activity_menu"
             android:parentActivityName="com.acm.ucf.quiz_game.MainActivity" >
             <intent-filter>
@@ -35,6 +35,14 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.acm.ucf.quiz_game.MainActivity" />
         </activity>
+        <activity
+            android:name="com.acm.ucf.quiz_game.MenuActivity"
+            android:label="Menu"
+            android:parentActivityName="com.acm.ucf.quiz_game.MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.acm.ucf.quiz_game.MainActivity" />
+        </activity>        
     </application>
 
 </manifest>
