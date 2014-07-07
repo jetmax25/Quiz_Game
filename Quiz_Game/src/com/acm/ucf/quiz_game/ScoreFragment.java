@@ -4,6 +4,8 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import android.app.Fragment;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -11,9 +13,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class ScoreFragment extends Fragment {
-	   int count= 60;
+	    int count= 60;
 	    TextView tv;
 	    private TimerTask mTimerTask;
         private Timer timer = new Timer();  
@@ -34,9 +37,9 @@ public class ScoreFragment extends Fragment {
 			return rootView;
 	}
 		
-		  public void onTimerTick() {
+			public void onTimerTick() {
 	            
-			  mTimerTask = new TimerTask() {
+				mTimerTask = new TimerTask() {
 	                // this method is called every 1ms
 	                public void run() {
 	                     timerHandler.post(new Runnable() {
@@ -48,12 +51,23 @@ public class ScoreFragment extends Fragment {
 	                        	 else{
 	                        		 tv.setText(Integer.toString(count));
 	                        		 mTimerTask.cancel();
+	                	             if(count == 0){
+	                	            	 if(getActivity() !=  null){
+	                	            		 Context context = getActivity();
+	                	            		 Toast toast = Toast.makeText(context, "Time is up!", Toast.LENGTH_SHORT);
+	                	            		 toast.show();
+	                	            	 }
+	                	            	 Intent intent = new Intent(getActivity(), MenuActivity.class);
+	                	            	 startActivity(intent);
+	                	             }
 	                        	 }
 	                            Log.d("tag", "Hello from timer fragment");
 	                         }
 	                     });
 	                }};
+
 	        }
+		  	
 }
 
 
