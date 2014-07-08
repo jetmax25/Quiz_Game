@@ -10,7 +10,7 @@
         android:layout_above="@+id/btnFlash"
         android:layout_alignLeft="@+id/btnFlash"
         android:layout_marginBottom="94dp"
-        android:text="Quizes"
+        android:text="@string/quizzes_button"
         android:width="250dp"
         android:onClick="startQuiz" />
 
@@ -21,7 +21,7 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="143dp"
-        android:text="Flash Cards"
+        android:text="@string/flash_cards_button"
         android:width="250dp" />
 
 </RelativeLayout>

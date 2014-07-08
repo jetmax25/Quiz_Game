@@ -8,6 +8,10 @@
     <string name="title_activity_quiz">QuizActivity</string>
 	<string name="question_name">Placeholder question name</string>
 	<string name="title_activity_menu">Placeholder</string>
+	<string name="quizzes_button">Quizzes</string>
+	<string name="flash_cards_button">Flash Cards</string>
+	<string name="splash_image_description">ACM Logo</string>
+	<string name="splash_screen_textview_text">UCF ACM</string>
 	<string-array name="questionBank">
 		<item >correct</item>
 		<item >wrong</item>

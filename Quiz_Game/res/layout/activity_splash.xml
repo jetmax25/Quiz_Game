@@ -6,6 +6,7 @@
 
     <ImageView
         android:id="@+id/imgLogo"
+        android:contentDescription="@string/splash_image_description"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
@@ -19,6 +20,6 @@
         android:textColor="#454545"
         android:gravity="center_horizontal"
         android:layout_alignParentBottom="true"
-        android:text="UCF ACM" />
+        android:text="@string/splash_screen_textview_text" />
 
 </RelativeLayout>

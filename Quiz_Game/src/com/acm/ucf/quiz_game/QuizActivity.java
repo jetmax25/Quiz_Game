@@ -1,12 +1,10 @@
 package com.acm.ucf.quiz_game;
 
 import java.util.ArrayList;
-import java.util.Random;
 
 import android.app.Activity;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
-import android.content.res.Resources;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Menu;
@@ -17,10 +15,9 @@ import android.widget.TextView;
 
 public class QuizActivity extends Activity  {
 	
-	
-	//counts the question number currently answering
-	private int questionNum = 0;
-	//holds the questions
+	// Counts the question number currently answering
+	// private int questionNum = 0;
+	// Holds the questions
 	private ArrayList<Question> questions;
 	private Button[] buttons = new Button[4];
 	private Question currentQuestion;
@@ -28,13 +25,11 @@ public class QuizActivity extends Activity  {
 	FragmentTransaction fragmentTransaction;
 	int score = 0;
 	
-	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_quiz);
 		
-
 		if (savedInstanceState == null) {
 			
 			fragmentManager = getFragmentManager();
@@ -44,47 +39,16 @@ public class QuizActivity extends Activity  {
 			fragmentTransaction.add(R.id.questionFragment, new QuestionFragment());
 			fragmentTransaction.add(R.id.navigationFragment, new NavigationFragment());
 			
-			//creates the questions
+			// Creates the questions
 			questions = new ArrayList<Question>();
 			currentQuestion = new Question("correct");
 			questions.add(currentQuestion);
 			fragmentTransaction.commit();
-			
-			
 		}
-		//Button nextQuestionButton = (Button) findViewById(R.id.next);
-		//nextQuestionButton.setEnabled(false);
-			
+		// Button nextQuestionButton = (Button) findViewById(R.id.next);
+		// nextQuestionButton.setEnabled(false);
 	}
 	
-	
-	/* TALK ABOUT THIS, WHY DOESNT IT WORK? */
-//	private void initialize(QuestionFragment q){
-//		
-//		View v=q.getView();
-//		
-//		buttons[0] = (Button) v.findViewById(R.id.button1);
-//		buttons[1] = (Button) v.findViewById(R.id.button2);
-//		buttons[2] = (Button) v.findViewById(R.id.button3);
-//		buttons[3] = (Button) v.findViewById(R.id.button4);
-//		
-//		
-//		//loads possible answers from array
-//		Resources res = getResources();
-//		String[] answers = res.getStringArray(R.array.questionBank);
-//		
-//		
-//		//creates a random number between 0 and 3 that button is correct and the others are incorrect
-//		Random rand = new Random();
-//		int correct = rand.nextInt(4); 
-//		
-//		
-//		buttons[correct].setText(answers[0]);
-//		buttons[(correct + 1) % 4].setText(answers[1]);
-//		buttons[(correct + 2) % 4].setText(answers[2]);
-//		buttons[(correct + 3) % 4].setText(answers[3]); 
-//		}
-
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 
@@ -104,7 +68,6 @@ public class QuizActivity extends Activity  {
 		}
 		return super.onOptionsItemSelected(item);
 	}
-	
 	
 	// Method will be called when a button is clicked to answer a question.
 	// It will grey out all the answers except the correct one, which will be in green
@@ -129,12 +92,10 @@ public class QuizActivity extends Activity  {
 			score++;
 			scoreView.setText(Integer.toString(score));
 			btnChosen.setEnabled(false);
-			
 		}
 		
 		else btnChosen.setBackgroundColor(Color.RED);
 			
-		
 		for(int i = 0; i < 4; i++){
 			if(btnChosen.equals(buttons[i])) continue;
 			
@@ -142,14 +103,11 @@ public class QuizActivity extends Activity  {
 			else buttons[i].setBackgroundColor(Color.GRAY);
 			buttons[i].setEnabled(false);
 		}
-		
-	
 	}
 	
 	public void findCorrect(Button btnSkip){
 		
-		
-		//finds the correct answer and makes it green all others are gray
+		// Finds the correct answer and makes it green all others are gray
 		for(int i = 0; i < 4; i++){
 			if(btnSkip.equals(buttons[i])) continue;
 			
@@ -158,21 +116,13 @@ public class QuizActivity extends Activity  {
 		}
 	}
 	
-	
 	public void next(View V){
-		
 		
 		FragmentTransaction transaction = getFragmentManager().beginTransaction();
 		transaction.replace(R.id.questionFragment, new QuestionFragment());
 		transaction.commit(); 
 	
-		
 		currentQuestion = new Question("correct");
-		questions.add(currentQuestion);
-		
-		
-		
+		questions.add(currentQuestion);	
 	}
-	
-	
 }
