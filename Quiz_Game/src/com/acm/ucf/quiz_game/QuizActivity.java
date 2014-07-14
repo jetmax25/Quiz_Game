@@ -19,14 +19,16 @@ public class QuizActivity extends Activity  {
 	
 	
 	//counts the question number currently answering
-	private int questionNum = 0;
+	private static int questionNum = 0;
 	//holds the questions
-	private ArrayList<Question> questions;
-	private Button[] buttons = new Button[4];
-	private Question currentQuestion;
+	private static ArrayList<Question> questions;
+	private static Button[] buttons = new Button[4];
+	private static Question currentQuestion;
 	FragmentManager fragmentManager;
 	FragmentTransaction fragmentTransaction;
-	int score = 0;
+	private int score = 0;
+	
+	private static final String KEY_SCORE = "scorekey";
 	
 	
 	@Override
@@ -48,13 +50,18 @@ public class QuizActivity extends Activity  {
 			questions = new ArrayList<Question>();
 			currentQuestion = new Question("correct");
 			questions.add(currentQuestion);
-			fragmentTransaction.commit();
-			
+			fragmentTransaction.commit();		
 			
 		}
 		//Button nextQuestionButton = (Button) findViewById(R.id.next);
 		//nextQuestionButton.setEnabled(false);
 			
+		// Check the bundle for instance
+		if(savedInstanceState != null) {
+			score = savedInstanceState.getInt(KEY_SCORE, 0);
+			
+		}
+		
 	}
 	
 	
@@ -143,7 +150,8 @@ public class QuizActivity extends Activity  {
 			buttons[i].setEnabled(false);
 		}
 		
-	
+		//savedInstanceState.putInt(KEY_SCORE, score);
+		
 	}
 	
 	public void findCorrect(Button btnSkip){
@@ -172,6 +180,11 @@ public class QuizActivity extends Activity  {
 		
 		
 		
+	}
+	
+	public void onSavedInstanceState(Bundle savedInstanceState) {
+		super.onSaveInstanceState(savedInstanceState);
+		savedInstanceState.putInt(KEY_SCORE, score);
 	}
 	
 	

@@ -22,7 +22,6 @@ public class NavigationFragment extends Fragment implements View.OnClickListener
 		return rootView;
 	}
 
-	@Override
 	public void onClick(View v) {
 		// TODO Auto-generated method stub
 		//AlertDialog.Builder builder1 = new AlertDialog.Builder(this);

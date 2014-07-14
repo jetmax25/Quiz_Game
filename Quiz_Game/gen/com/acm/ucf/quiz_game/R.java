@@ -32,7 +32,7 @@ public final class R {
     }
     public static final class id {
         public static final int RelativeLayout1=0x7f090007;
-        public static final int action_settings=0x7f090015;
+        public static final int action_settings=0x7f090014;
         public static final int btnFlash=0x7f090002;
         public static final int btnQuiz=0x7f090001;
         public static final int button1=0x7f09000c;
@@ -40,19 +40,18 @@ public final class R {
         public static final int button3=0x7f09000d;
         public static final int button4=0x7f09000e;
         public static final int container=0x7f090000;
-        public static final int editText1=0x7f09000f;
-        public static final int evScore=0x7f090013;
+        public static final int evScore=0x7f090012;
         public static final int imgLogo=0x7f090006;
-        public static final int linearLayout1=0x7f090010;
+        public static final int linearLayout1=0x7f09000f;
         public static final int navigationFragment=0x7f090005;
         public static final int next=0x7f090009;
         public static final int questionFragment=0x7f090004;
         public static final int quit=0x7f090008;
         public static final int scoreFragment=0x7f090003;
-        public static final int textView1=0x7f090011;
-        public static final int textView3=0x7f090014;
+        public static final int textView1=0x7f090010;
+        public static final int textView3=0x7f090013;
         public static final int text_view_1=0x7f09000a;
-        public static final int tvScore=0x7f090012;
+        public static final int tvScore=0x7f090011;
     }
     public static final class layout {
         public static final int activity_main=0x7f030000;
