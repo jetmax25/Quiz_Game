@@ -9,7 +9,6 @@ public class Question{
 		private String answer;
 		private static int score;
 		
-		
 		Question(String answer){
 			this.answer = answer; 
 		}

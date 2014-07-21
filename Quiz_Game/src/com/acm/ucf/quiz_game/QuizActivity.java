@@ -1,5 +1,12 @@
 package com.acm.ucf.quiz_game;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -61,6 +68,9 @@ public class QuizActivity extends Activity  {
 			score = savedInstanceState.getInt(KEY_SCORE, 0);
 			
 		}
+		
+		
+			
 		
 	}
 	
@@ -186,6 +196,32 @@ public class QuizActivity extends Activity  {
 		super.onSaveInstanceState(savedInstanceState);
 		savedInstanceState.putInt(KEY_SCORE, score);
 	}
+
+
+	@Override
+	protected void onStop() {
+		// TODO Auto-generated method stub
+		
+				  
+				File file = new File("Questions.txt");  
+				PrintWriter out = null;
+				try {
+					out = new PrintWriter(new FileWriter(file));
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}  
+				  
+				// Write each string in the array on a separate line  
+				for (int i = 0; i < questions.size(); i++) {  
+				    out.println(questions.get(i));
+				}  
+				  
+				out.close();  
+		super.onStop();
+	}
+	
+	
 	
 	
 }
